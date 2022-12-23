@@ -1846,6 +1846,7 @@
 #include "code\modules\asset_cache\transports\webroot_transport.dm"
 #include "code\modules\atmospherics\auxgm\breathing_classes.dm"
 #include "code\modules\atmospherics\auxgm\gas_types.dm"
+#include "code\modules\atmospherics\auxgm\genericatmosy.dm"
 #include "code\modules\atmospherics\environmental\LINDA_fire.dm"
 #include "code\modules\atmospherics\environmental\LINDA_system.dm"
 #include "code\modules\atmospherics\environmental\LINDA_turf_tile.dm"

@@ -52,7 +52,8 @@
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(giver, air, moles / giver.total_moles()))
 	else
-		giver.transfer_to(air, moles)
+		if(!giver.check_then_transfer_to(air, moles))
+			return FALSE
 		update_visuals()
 	return TRUE
 
@@ -62,7 +63,8 @@
 	if(SSair.thread_running())
 		SSair.deferred_airs += list(list(giver, air, ratio))
 	else
-		giver.transfer_ratio_to(air, ratio)
+		if(!giver.check_then_transfer_to_ratio(air, ratio))
+			return FALSE
 		update_visuals()
 	return TRUE
 

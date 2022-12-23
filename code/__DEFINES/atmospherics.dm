@@ -155,12 +155,12 @@
 #define FROZEN_ATMOS				"o2=22;n2=82;TEMP=180" //-93.15°C snow and ice turfs
 #define BURNMIX_ATMOS				"o2=100;plasma=200;TEMP=370" //used in the holodeck burn test program
 
-//ATMOSPHERICS DEPARTMENT GAS TANK TURFS
+//ATMOSPHERICS DEPARTMENT GAS TANK TURFS //trying to get same pressure as would have in ideal
 #define ATMOS_TANK_N2O				"n2o=6000;TEMP=293.15"
-#define ATMOS_TANK_CO2				"co2=50000;TEMP=293.15"
-#define ATMOS_TANK_PLASMA			"plasma=70000;TEMP=293.15"
-#define ATMOS_TANK_O2				"o2=100000;TEMP=293.15"
-#define ATMOS_TANK_N2				"n2=100000;TEMP=293.15"
+#define ATMOS_TANK_CO2				"co2=42877;TEMP=293.15"
+#define ATMOS_TANK_PLASMA			"plasma=25968;TEMP=293.15"
+#define ATMOS_TANK_O2				"o2=53063;TEMP=293.15"
+#define ATMOS_TANK_N2				"n2=44681;TEMP=293.15"
 #define ATMOS_TANK_AIRMIX			"o2=2644;n2=10580;TEMP=293.15"
 
 //LAVALAND

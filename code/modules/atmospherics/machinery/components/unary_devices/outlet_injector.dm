@@ -75,7 +75,11 @@
 
 	if(air_contents != null)
 		if(air_contents.return_temperature() > 0)
-			loc.assume_air_ratio(air_contents, volume_rate / air_contents.return_volume())
+			if (!loc.assume_air_ratio(air_contents, volume_rate / air_contents.return_volume()))
+				visible_message("<span class='warning'>[src] can't inject [volume_rate] liters of gas into the [loc] and shuts down to avoid damage.")
+				on = FALSE
+				update_icon()
+				ui_update()
 			air_update_turf()
 
 			update_parents()
@@ -90,7 +94,10 @@
 	injecting = 1
 
 	if(air_contents.return_temperature() > 0)
-		loc.assume_air_ratio(air_contents, volume_rate / air_contents.return_volume())
+		if (!loc.assume_air_ratio(air_contents, volume_rate / air_contents.return_volume()))
+			visible_message("<span class='warning'>[src] can't inject [volume_rate] liters of gas into the [loc] and stops injecting.")
+			update_icon()
+			ui_update()
 		update_parents()
 
 	flick("inje_inject", src)
