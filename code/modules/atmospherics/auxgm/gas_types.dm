@@ -3,6 +3,8 @@
 	specific_heat = 20
 	name = "Oxygen"
 	oxidation_temperature = T0C - 100 // it checks max of this and fire temperature, so rarely will things spontaneously combust
+	imf_constant = 138.2
+	molar_volume = 0.03186
 
 /datum/gas/nitrogen
 	id = GAS_N2
@@ -18,6 +20,8 @@
 		)
 	)
 	name = "Nitrogen"
+	imf_constant = 137
+	molar_volume = 0.0387
 
 /datum/gas/carbon_dioxide //what the fuck is this?
 	id = GAS_CO2
@@ -36,6 +40,8 @@
 	)
 	fusion_power = 3
 	enthalpy = -393500
+	imf_constant = 364
+	molar_volume = 0.04267
 
 /datum/gas/plasma
 	id = GAS_PLASMA
@@ -46,6 +52,8 @@
 	flags = GAS_FLAG_DANGEROUS
 	// no fire info cause it has its own bespoke reaction for trit generation reasons
 	enthalpy = FIRE_PLASMA_ENERGY_RELEASED // 3000000, 3 megajoules, 3000 kj
+	imf_constant = 1218
+	molar_volume = 0.08407
 
 /datum/gas/water_vapor
 	id = GAS_H2O
@@ -56,6 +64,8 @@
 	fusion_power = 8
 	breath_reagent = /datum/reagent/water
 	enthalpy = -241800 // FIRE_HYDROGEN_ENERGY_RELEASED is actually what this was supposed to be
+	imf_constant = 553.6
+	molar_volume = 0.03049
 
 /datum/gas/hypernoblium
 	id = GAS_HYPERNOB
@@ -75,6 +85,8 @@
 	oxidation_rate = 0.5
 	oxidation_temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST + 100
 	enthalpy = 81600
+	imf_constant = 383.2
+	molar_volume = 0.04415
 
 /datum/gas/nitryl
 	id = GAS_NITRYL
@@ -96,6 +108,8 @@
 	moles_visible = MOLES_GAS_VISIBLE
 	flags = GAS_FLAG_DANGEROUS
 	fusion_power = 1
+	imf_constant = 24.76
+	molar_volume = 0.02661
 	/*
 	these are for when we add hydrogen, trit gets to keep its hardcoded fire for legacy reasons
 	fire_provides = list(GAS_H2O = 2)

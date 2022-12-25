@@ -6,7 +6,7 @@
 	var/copiedsrc = src.copy()
 	var/copiedair = target.copy()
 	src.transfer_ratio_to(target, ratio)
-	if ((target.return_pressure() <= 0) || isnum_safe(target.return_pressure()))
+	if ((target.return_pressure() < 0) || !isnum_safe(target.return_pressure()))
 		src.copy_from(copiedsrc)
 		target.copy_from(copiedair)
 		return FALSE
@@ -17,7 +17,7 @@
 	var/copiedsrc = src.copy()
 	var/copiedair = target.copy()
 	src.transfer_to(target, amount)
-	if ((target.return_pressure() <= 0) || isnum_safe(target.return_pressure()))
+	if ((target.return_pressure() < 0) || !isnum_safe(target.return_pressure()))
 		src.copy_from(copiedsrc)
 		target.copy_from(copiedair)
 		return FALSE
