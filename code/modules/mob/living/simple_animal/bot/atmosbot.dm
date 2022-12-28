@@ -191,7 +191,7 @@
 	var/pressure_delta = min(ATMOSBOT_MAX_PRESSURE_CHANGE, (ONE_ATMOSPHERE - environment_pressure))
 
 	if(pressure_delta > 0)
-		var/transfer_moles = pressure_delta*environment.return_volume()/(T20C * R_IDEAL_GAS_EQUATION)
+		var/transfer_moles = solve_moles(environment, pressure_delta, T20C, environment.return_volume())
 		if(emagged == 2)
 			environment.adjust_moles(GAS_CO2, transfer_moles)
 		else

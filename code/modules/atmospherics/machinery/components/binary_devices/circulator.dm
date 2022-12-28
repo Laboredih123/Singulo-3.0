@@ -54,7 +54,7 @@
 	if(air2.return_temperature()>0)
 		var/pressure_delta = (input_starting_pressure - output_starting_pressure)/2
 
-		var/transfer_moles = pressure_delta*air1.return_volume()/(air2.return_temperature() * R_IDEAL_GAS_EQUATION)
+		var/transfer_moles = solve_moles(air2, pressure_delta, air2.return_temperature(), air1.return_volume())
 
 		last_pressure_delta = pressure_delta
 
