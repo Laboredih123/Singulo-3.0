@@ -124,24 +124,23 @@
 	..()
 	if(isturf(target))
 		var/turf/Turf1 = get_turf(target)
-		new /obj/structure/holosign/barrier/atmostest(T)
+		new /obj/structure/holosign/barrier/atmos/test(Turf1)
 		for(var/direction in GLOB.cardinals)
 			var/turf/Turf2 = get_step(Turf1, direction)
 			if(!istype(Turf2))
 				continue
 			if(Turf2.CanAtmosPass(Turf1))
-				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(T)
-				temp.color = color2hex("green")
+				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+				objtemp.color = color2hex("green")
 			else
-				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(T)
-				temp.color = color2hex("red")
+				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+				objtemp.color = color2hex("red")
 
 
 /obj/structure/holosign/barrier/atmos/test
-	var/timerid
-	var/duration = 5 SECONDS
+	duration = 5 SECONDS
 
-/obj/structure/holosign/barrier/atmostest/Destroy()
+/obj/structure/holosign/barrier/atmos/test/Destroy()
 	. = ..()
 	deltimer(timerid)
 
