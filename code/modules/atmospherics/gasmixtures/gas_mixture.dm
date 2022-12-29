@@ -307,12 +307,12 @@ get_true_breath_pressure(pp) --> gas_pp = pp/breath_pp*total_moles()
 		//Need at least 10 kPa difference to overcome friction in the mechanism
 		return FALSE
 
-	//Calculate necessary moles to transfer using van der waals de first
+	//Calculate necessary moles to transfer using PV = nRT
 	if((total_moles() > 0) && (return_temperature()>0))
 		var/pressure_delta = min(target_pressure - output_starting_pressure, (input_starting_pressure - output_starting_pressure)/2)
 		//Can not have a pressure delta that would cause output_pressure > input_pressure
 
-		var/transfer_moles = solve_moles(src, pressure_delta, return_temperature(), output_air.return_volume())
+		var/transfer_moles = pressure_delta*output_air.return_volume()/(return_temperature() * R_IDEAL_GAS_EQUATION)
 
 		//Actually transfer the gas
 		var/datum/gas_mixture/removed = remove(transfer_moles)

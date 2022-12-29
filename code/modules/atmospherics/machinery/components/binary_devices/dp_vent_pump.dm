@@ -81,7 +81,7 @@
 
 		if(pressure_delta > 0)
 			if(air1.return_temperature() > 0)
-				var/transfer_moles = solve_moles(air1, pressure_delta, air1.return_temperature(), environment.return_volume())
+				var/transfer_moles = pressure_delta*environment.return_volume()/(air1.return_temperature() * R_IDEAL_GAS_EQUATION)
 
 				loc.assume_air_moles(air1, transfer_moles)
 
