@@ -165,11 +165,7 @@
 		new /obj/structure/holosign/barrier/atmos/test/pressure(T)
 
 /obj/structure/holosign/barrier/atmos/test/pressure
-	duration = 10 SECONDS
-	CanAtmosPass = ATMOS_PASS_YES
-	alpha = 255
-	color = "yellow"
-	icon = null
+	duration = 15 SECONDS
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
 	. = ..()
@@ -180,7 +176,7 @@
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
-	maptext = MAPTEXT("[T.air.return_pressure()] KPA")
+	color = hsv(240-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 255) //that lil decimal is 1024/202.65, for a color between blue and red
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
 	. = ..()
