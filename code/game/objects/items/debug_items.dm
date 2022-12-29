@@ -123,15 +123,13 @@
 /obj/item/debug/atmostiletest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	..()
 	if(isturf(target))
-		var/turf/Turf1 = get_turf(target)
+		var/turf/open/Turf1 = get_turf(target)
+		if(!istype(Turf1))
+			return
 		new /obj/structure/holosign/barrier/atmos/test(Turf1)
 		for(var/direction in GLOB.cardinals)
 			var/turf/open/Turf2 = get_step(Turf1, direction)
-			if(!istype(Turf2))
-				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
-				objtemp.color = color2hex("black")
-				continue
-			if(Turf2.CanAtmosPass(Turf1))
+			if(Turf1.CanAtmosPass(Turf2))
 				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
 				objtemp.color = color2hex("green")
 			else
