@@ -176,7 +176,7 @@
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
-	maptext = MAPTEXT("[T.return_pressure()] KPA")
+	maptext = MAPTEXT("[T.air.return_pressure()] KPA")
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
 	. = ..()
