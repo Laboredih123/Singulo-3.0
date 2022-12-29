@@ -141,6 +141,7 @@
 	CanAtmosPass = ATMOS_PASS_YES
 	icon = 'icons/Testing/turf_analysis.dmi'
 	icon_state = ""
+	alpha = 50
 
 /obj/structure/holosign/barrier/atmos/test/Destroy()
 	. = ..()
@@ -165,7 +166,7 @@
 		new /obj/structure/holosign/barrier/atmos/test/pressure(T)
 
 /obj/structure/holosign/barrier/atmos/test/pressure
-	duration = 15 SECONDS
+	duration = 30 SECONDS
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
 	. = ..()
