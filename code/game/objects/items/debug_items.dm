@@ -122,19 +122,18 @@
 
 /obj/item/debug/atmostiletest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	..()
-	if(isturf(target))
-		var/turf/open/Turf1 = get_turf(target)
-		if(!istype(Turf1))
-			return
-		new /obj/structure/holosign/barrier/atmos/test(Turf1)
-		for(var/direction in GLOB.cardinals)
-			var/turf/open/Turf2 = get_step(Turf1, direction)
-			if(Turf1.CanAtmosPass(Turf2))
-				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
-				objtemp.color = color2hex("green")
-			else
-				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
-				objtemp.color = color2hex("red")
+	var/turf/open/Turf1 = get_turf(target)
+	if(!istype(Turf1))
+		return
+	new /obj/structure/holosign/barrier/atmos/test(Turf1)
+	for(var/direction in GLOB.cardinals)
+		var/turf/open/Turf2 = get_step(Turf1, direction)
+		if(Turf1.CanAtmosPass(Turf2))
+			var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+			objtemp.color = color2hex("green")
+		else
+			var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+			objtemp.color = color2hex("red")
 
 
 /obj/structure/holosign/barrier/atmos/test
@@ -146,5 +145,42 @@
 	deltimer(timerid)
 
 /obj/structure/holosign/barrier/atmos/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
+
+/obj/item/debug/atmostiletest
+	name = "atmos tile interact check stick"
+	desc = "click on a tile to flood an area with thingies that show the pressure for 30 seconds"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "hypertool"
+	toolspeed = 0.1
+	tool_behaviour = null
+
+/obj/item/debug/atmostiletest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	..()
+	var/turf/open/Turf1 = get_turf(target)
+	if(!istype(Turf1))
+		return
+	new /obj/structure/holosign/barrier/atmos/test/pressure(Turf1)
+
+/obj/structure/holosign/barrier/atmos/test/pressure
+	duration = 10 SECONDS
+	CanAtmosPass = ATMOS_PASS_YES
+
+/obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSAir, src)
+
+/obj/structure/holosign/barrier/atmos/test/pressure/process(delta_time)
+	. = ..()
+	var/turf/T = get_turf(src)
+	maptext = MAPTEXT(T.return_pressure())
+
+/obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSAir, src)
+	deltimer(timerid)
+
+/obj/structure/holosign/barrier/atmos/pressure/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
