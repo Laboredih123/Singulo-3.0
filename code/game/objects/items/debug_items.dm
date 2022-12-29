@@ -126,8 +126,10 @@
 		var/turf/Turf1 = get_turf(target)
 		new /obj/structure/holosign/barrier/atmos/test(Turf1)
 		for(var/direction in GLOB.cardinals)
-			var/turf/Turf2 = get_step(Turf1, direction)
+			var/turf/open/Turf2 = get_step(Turf1, direction)
 			if(!istype(Turf2))
+				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+				objtemp.color = color2hex("black")
 				continue
 			if(Turf2.CanAtmosPass(Turf1))
 				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
