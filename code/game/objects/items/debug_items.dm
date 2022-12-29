@@ -160,16 +160,15 @@
 
 /obj/item/debug/atmostiletestpress/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	..()
-	var/turf/open/Turf1 = get_turf(target)
-	if(!istype(Turf1))
-		return
-	var/area/A = get_area(src)
+	var/area/A = get_area(target)
 	for(var/turf/open/T in A)
 		new /obj/structure/holosign/barrier/atmos/test/pressure(T)
 
 /obj/structure/holosign/barrier/atmos/test/pressure
 	duration = 10 SECONDS
 	CanAtmosPass = ATMOS_PASS_YES
+	alpha = 255
+	color = "yellow"
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
 	. = ..()
