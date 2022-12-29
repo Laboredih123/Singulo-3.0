@@ -169,16 +169,18 @@
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
 	. = ..()
-	START_PROCESSING(SSAir, src)
+	START_PROCESSING(SSfastprocess, src)
 
 /obj/structure/holosign/barrier/atmos/test/pressure/process(delta_time)
 	. = ..()
-	var/turf/T = get_turf(src)
-	maptext = MAPTEXT(T.return_pressure())
+	var/turf/open/T = get_turf(src)
+	if(!istype(T))
+		return
+	maptext = MAPTEXT("[T.return_pressure()] KPA")
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
 	. = ..()
-	STOP_PROCESSING(SSAir, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	deltimer(timerid)
 
 /obj/structure/holosign/barrier/atmos/pressure/examine(mob/user)
