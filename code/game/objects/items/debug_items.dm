@@ -176,7 +176,7 @@
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
-	color = hsv(240-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 255) //that lil decimal is 1024/202.65, for a color between blue and red
+	color = HSVtoRGB(hsv(240-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 255)) //that lil decimal is 1024/202.65, for a color between blue and red
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
 	. = ..()
