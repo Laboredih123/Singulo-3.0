@@ -169,7 +169,7 @@
 	CanAtmosPass = ATMOS_PASS_YES
 	alpha = 255
 	color = "yellow"
-	icon = ''
+	icon = null
 
 /obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
 	. = ..()
