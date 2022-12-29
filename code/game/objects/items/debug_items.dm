@@ -139,6 +139,7 @@
 
 /obj/structure/holosign/barrier/atmos/test
 	duration = 5 SECONDS
+	CanAtmosPass = ATMOS_PASS_YES
 
 /obj/structure/holosign/barrier/atmos/test/Destroy()
 	. = ..()
