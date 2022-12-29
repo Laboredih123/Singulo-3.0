@@ -125,31 +125,31 @@
 	var/turf/open/Turf1 = get_turf(target)
 	if(!istype(Turf1))
 		return
-	new /obj/structure/holosign/barrier/atmos/test(Turf1)
+	new /obj/testobjdisappear(Turf1)
 	for(var/direction in GLOB.cardinals)
 		var/turf/open/Turf2 = get_step(Turf1, direction)
 		if(Turf1.CanAtmosPass(Turf2))
-			var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+			var/obj/testobjdisappear/objtemp = new /obj/testobjdisappear(Turf2)
 			objtemp.color = color2hex("green")
 		else
-			var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(Turf2)
+			var/obj/testobjdisappear/objtemp = new /obj/testobjdisappear(Turf2)
 			objtemp.color = color2hex("red")
 
 
-/obj/structure/holosign/barrier/atmos/test
-	duration = 5 SECONDS
-	CanAtmosPass = ATMOS_PASS_YES
+/obj/testobjdisappear
+	var/timerid
+	var/duration = 5 SECONDS
 	icon = 'icons/Testing/turf_analysis.dmi'
 	icon_state = ""
 	alpha = 50
 
-/obj/structure/holosign/barrier/atmos/test/Destroy()
+/obj/testobjdisappear/Destroy()
 	. = ..()
 	deltimer(timerid)
 
-/obj/structure/holosign/barrier/atmos/examine(mob/user)
+/obj/testobjdisappear/Initialize(mapload)
 	. = ..()
-	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
+	timerid = QDEL_IN(src, duration) //Singulo edit - Nerfs holofirelocks and plastic flaps
 
 /obj/item/debug/atmostiletestpress
 	name = "atmos tile interact check stick"
@@ -163,26 +163,21 @@
 	..()
 	var/area/A = get_area(target)
 	for(var/turf/open/T in A)
-		new /obj/structure/holosign/barrier/atmos/test/pressure(T)
+		new /obj/testobjdisappear/pressure(T)
 
-/obj/structure/holosign/barrier/atmos/test/pressure
+/obj/testobjdisappear/pressure
 	duration = 30 SECONDS
 
-/obj/structure/holosign/barrier/atmos/test/pressure/Initialize(mapload)
+/obj/testobjdisappear/pressure/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSfastprocess, src)
 
-/obj/structure/holosign/barrier/atmos/test/pressure/process(delta_time)
+/obj/testobjdisappear/pressure/process(delta_time)
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
 	color = HSVtoRGB(hsv(1024-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 255)) //that lil decimal is 1024/202.65, for a color between blue and red
 
-/obj/structure/holosign/barrier/atmos/test/pressure/Destroy()
+/obj/testobjdisappear/pressure/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSfastprocess, src)
-	deltimer(timerid)
-
-/obj/structure/holosign/barrier/atmos/pressure/examine(mob/user)
-	. = ..()
-	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
