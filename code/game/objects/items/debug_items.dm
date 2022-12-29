@@ -139,6 +139,8 @@
 /obj/structure/holosign/barrier/atmos/test
 	duration = 5 SECONDS
 	CanAtmosPass = ATMOS_PASS_YES
+	icon = 'icons/Testing/turf_analysis.dmi'
+	icon_state = ""
 
 /obj/structure/holosign/barrier/atmos/test/Destroy()
 	. = ..()
@@ -148,7 +150,7 @@
 	. = ..()
 	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
 
-/obj/item/debug/atmostiletest
+/obj/item/debug/atmostiletestpress
 	name = "atmos tile interact check stick"
 	desc = "click on a tile to flood an area with thingies that show the pressure for 30 seconds"
 	icon = 'icons/obj/device.dmi'
@@ -156,12 +158,14 @@
 	toolspeed = 0.1
 	tool_behaviour = null
 
-/obj/item/debug/atmostiletest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/debug/atmostiletestpress/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	..()
 	var/turf/open/Turf1 = get_turf(target)
 	if(!istype(Turf1))
 		return
-	new /obj/structure/holosign/barrier/atmos/test/pressure(Turf1)
+	var/area/A = get_area(src)
+	for(var/turf/open/T in A)
+		new /obj/structure/holosign/barrier/atmos/test/pressure(T)
 
 /obj/structure/holosign/barrier/atmos/test/pressure
 	duration = 10 SECONDS
