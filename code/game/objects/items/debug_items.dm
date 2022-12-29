@@ -111,3 +111,40 @@
 			tool_behaviour = TOOL_SHOVEL
 		if("Wire Brush")
 			tool_behaviour = TOOL_RUSTSCRAPER
+
+/obj/item/debug/atmostiletest
+	name = "atmos tile interact check stick"
+	desc = "click on a tile to check what tiles the original's tile's atmos interacts with"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "hypertool"
+	toolspeed = 0.1
+	tool_behaviour = null
+
+/obj/item/debug/atmostiletest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	..()
+	if(isturf(target))
+		var/turf/Turf1 = get_turf(target)
+		new /obj/structure/holosign/barrier/atmostest(T)
+		for(var/direction in GLOB.cardinals)
+			var/turf/Turf2 = get_step(Turf1, direction)
+			if(!istype(Turf2))
+				continue
+			if(Turf2.CanAtmosPass(Turf1))
+				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(T)
+				temp.color = color2hex("green")
+			else
+				var/obj/structure/holosign/barrier/atmos/test/objtemp = new /obj/structure/holosign/barrier/atmos/test(T)
+				temp.color = color2hex("red")
+
+
+/obj/structure/holosign/barrier/atmos/test
+	var/timerid
+	var/duration = 5 SECONDS
+
+/obj/structure/holosign/barrier/atmostest/Destroy()
+	. = ..()
+	deltimer(timerid)
+
+/obj/structure/holosign/barrier/atmos/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>The holofan will decay in [timeleft(timerid)/600] minutes.</span>"
