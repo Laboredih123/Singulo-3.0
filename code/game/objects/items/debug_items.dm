@@ -141,7 +141,7 @@
 	var/duration = 5 SECONDS
 	icon = 'icons/Testing/turf_analysis.dmi'
 	icon_state = ""
-	alpha = 50
+	alpha = 100
 
 /obj/testobjdisappear/Destroy()
 	. = ..()
@@ -176,7 +176,7 @@
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
-	color = HSVtoRGB(hsv(1024-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 255)) //that lil decimal is 1024/202.65, for a color between blue and red
+	color = HSVtoRGB(hsv(1024-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255)) //that lil decimal is 1024/202.65, for a color between blue and red
 
 /obj/testobjdisappear/pressure/Destroy()
 	. = ..()
