@@ -141,7 +141,9 @@
 	var/duration = 5 SECONDS
 	icon = 'icons/Testing/turf_analysis.dmi'
 	icon_state = ""
-	alpha = 150
+	alpha = 160
+	layer = FLY_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/testobjdisappear/Destroy()
 	. = ..()
@@ -149,7 +151,7 @@
 
 /obj/testobjdisappear/Initialize(mapload)
 	. = ..()
-	timerid = QDEL_IN(src, duration) //Singulo edit - Nerfs holofirelocks and plastic flaps
+	timerid = QDEL_IN(src, duration)
 
 /obj/item/debug/atmostiletestpress
 	name = "atmos tile interact check stick"
@@ -167,6 +169,10 @@
 
 /obj/testobjdisappear/pressure
 	duration = 30 SECONDS
+	maptext_height = 26
+	maptext_width = 32
+	maptext_y = -1
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/testobjdisappear/pressure/Initialize(mapload)
 	. = ..()
@@ -177,6 +183,9 @@
 	if(!istype(T))
 		return
 	color = HSVtoRGB(hsv(1024-(5.05304712559 * clamp(T.air.return_pressure(), 0, 202.65)), 255, 255, 150)) //that lil decimal is 1024/202.65, for a color between blue and red
+	var/new_text = {"<div style="font-size:5px;color:white;font:'Small Fonts';text-align:center;" valign="top">[T.air.return_pressure()] KPA</div>"}
+	if(maptext != new_text)
+		maptext = new_text
 
 /obj/testobjdisappear/pressure/Destroy()
 	. = ..()
