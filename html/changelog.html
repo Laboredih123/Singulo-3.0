@@ -56,6 +56,146 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">25 January 2023</h2>
+			<h3 class="author">DatBoiTim updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added a Smiley Face IPC Screen.</li>
+			</ul>
+			<h3 class="author">RKz updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="spellcheck">all mentions of "°K" have been removed, because degrees are not used to measure kelvin, kelvin is used to measure kelvin</li>
+				<li class="bugfix">Railings now correctly drop their iron rod components when deconstructed</li>
+				<li class="bugfix">fixed bad layering for lizard snouts in mutant_bodyparts.dmi</li>
+			</ul>
+			<h3 class="author">Rohesie, RKz updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">using disarm intent on a pet won't make you beat the shit out of them anymore, you will simply gently push them. HoP animal abuse cases down %95! HoS animal abuse cases down... %1 percent...</li>
+			</ul>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The volume of lobby music has been reduced by 35%.</li>
+				<li class="tweak">The volume of shuttle takeoff and landing has been reduced by 30-40%</li>
+				<li class="code_imp">Changed the default installed PDA programs to only being installed on the PDA subtype instead of the default Tablet SSD.</li>
+				<li class="code_imp">Changes the size of the Notepad to 0 and makes it undeletable and unavailable on NTNet.</li>
+				<li class="code_imp">Moves the Wiki Uplink Program to only being installed by default on the PDAs</li>
+				<li class="bugfix">It's now impossible to land shuttles ontop of the arrival shuttle to prevent spawning or the arrivals shuttle from leaving</li>
+				<li class="bugfix">It's also impossible now to land another shuttle on the cargo shuttle to stowaway on it.</li>
+				<li class="bugfix">Fixes improper firedoor updates and potential failure to create shuttles with the rapid shuttle designator when designating in multiple areas at the same time</li>
+				<li class="tweak">Railing deconstruction is no longer instant- 3.5 seconds total between two steps, slightly longer than construction (3 seconds).</li>
+				<li class="tweak">Dynamic will now count unreadied players as half a player (round up) for ruleset selection purposes, allowing rulesets to get a more accurate depiction of the roundstart population.</li>
+				<li class="bugfix">stuff that is supposed to make you blind (i.e. blindfolds, stabbing your eyes out) will actually share the correct check with regular blindness now</li>
+			</ul>
+			<h3 class="author">haukeschuemann updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">All mobs can now switch hands with middle click. This mostly affects gorillas, dexterous stands and monky.</li>
+				<li class="code_imp">Changeling sting code has been migrated over to signals.</li>
+			</ul>
+
+			<h2 class="date">18 January 2023</h2>
+			<h3 class="author">RKz updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Paleness is no longer the presenting symptom for bloodloss. It has now been wrapped up into a catch-all term of "appearing faint", which can be applied to any carbon with a blood level, Organic or Inorganic.</li>
+			</ul>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">added log_crafting</li>
+				<li class="admin">Added logging to crafting items</li>
+				<li class="admin">Added messages for crafting dangerous items</li>
+				<li class="rscadd">Added secure safes to all heads offices on Corg</li>
+			</ul>
+
+			<h2 class="date">17 January 2023</h2>
+			<h3 class="author">An anonymous wizard updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">I have replenished the magic within my animated statues, you are welcome.</li>
+			</ul>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed Detective's Spyglass Kit showing a black screen upon opening the remove view window</li>
+			</ul>
+
+			<h2 class="date">15 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed missing range checks when rotating some structures</li>
+				<li class="tweak">Obsessed antags no longer stutter/vomit/faint while talking near their target.</li>
+				<li class="spellcheck">Fixes a typo in some obsessed logging</li>
+				<li class="rscadd">Added a new Botanical belt</li>
+				<li class="rscadd">Added the botanical belt to the Botany lockers and the Biogenerator</li>
+				<li class="imageadd">Added icons for the Botanical belt</li>
+				<li class="imageadd">Added belt icons for the Plant Analyzer, Pest Spray, Hatchet, Spade and Cultivator</li>
+				<li class="code_imp">Replaced all can_hold lists with static lists for belts</li>
+			</ul>
+
+			<h2 class="date">14 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed mauler and marauder sprites</li>
+				<li class="rscadd">Color coordinated mixer devices for atmos</li>
+				<li class="tweak">renamed mixer nodes to be less confusing and go along with new color changes</li>
+				<li class="imageadd">replaced regular mixers devices with colored coordinated red-blue ones</li>
+			</ul>
+
+			<h2 class="date">11 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes phobia gain message not showing</li>
+			</ul>
+
+			<h2 class="date">09 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Attempting to compile BeeStation in OpenDream now gives a better error message</li>
+				<li class="balance">basic medicines (Bicaridine, Kelotane, Anti-toxin, Dexalin, Tricordrazine) are less effective over 20 damage ("if(prob(100/(2**(round(PLAYER_DAMAGE / 20 )))))") 100% chance to heal, but for every 20 damage you have, the chance is halved. (100% / 50% at 20 / 25% at 40 / 12.5% at 60).</li>
+				<li class="balance">Bicaridine/Kelotane/Anti-toxin heals 0.5 (brute/burn/toxin)</li>
+				<li class="balance">Dexalin heals 1.5 (oxy damage)</li>
+				<li class="balance">Tricordrazine heals 1 (4 types), metabolisation rate is 1.2u, max overdose is now 50u.</li>
+				<li class="rscadd">Adds multi-Z trunks to pipe dispensers.</li>
+				<li class="imageadd">Adds construction sprites for multi-Z trunks.</li>
+			</ul>
+
+			<h2 class="date">07 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Removes an unused variable from the unit tests.</li>
+				<li class="rscadd">Added more robust logging for admin supply pods.</li>
+				<li class="bugfix">Fixed a runtime that broke titlescreens.</li>
+			</ul>
+
+			<h2 class="date">06 January 2023</h2>
+			<h3 class="author">RKz updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Depleted Uranium directional windows will now appear correctly.</li>
+			</ul>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes animated title screens</li>
+			</ul>
+
+			<h2 class="date">05 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">It is now possible to view the results of polls (Except IRV).</li>
+			</ul>
+
+			<h2 class="date">04 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Title screens now support images that are any aspect ratio.</li>
+			</ul>
+
+			<h2 class="date">02 January 2023</h2>
+			<h3 class="author">SinguloMirrorbot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added hoodies, avviable via the beecoin shop, in-game vendors or crafting</li>
+				<li class="rscadd">Added Durathread hoodies, avviable only via crafting</li>
+				<li class="code_imp">Standardized all the timers under the stack folder to use `SECONDS` instead of deciseconds and some True-False variables</li>
+				<li class="rscadd">Added a radial menu to the pAI face selection</li>
+				<li class="tweak">made chicken sandwiches more dystopian and less political</li>
+				<li class="tweak">Made the Rad Collector and the Tesla coil generate discovery points alongside general research points while in research mode.</li>
+				<li class="tweak">Increased the amount of money added to the Engineering budget to the Tesla coils in research mode.</li>
+			</ul>
+
 			<h2 class="date">30 December 2022</h2>
 			<h3 class="author">Addust updated:</h3>
 			<ul class="changes bgimages16">
@@ -92,6 +232,14 @@
 				<li class="bugfix">Fixed a runtime I've found located in the alcohol.dm file</li>
 				<li class="bugfix">Fixed hostile breadloaf dropping invisible bread upon being butchered</li>
 				<li class="tweak">Gave the Debug outfit an ERT medibelt instead of the advanced health analyzer</li>
+				<li class="rscadd">Added new TGUI interface for pAIs</li>
+				<li class="rscadd">pAIs have now new software: GPS</li>
+				<li class="rscadd">pAIs have now new software: Photo printer</li>
+				<li class="rscadd">Borgs now can wear drones and pAIs as hats</li>
+				<li class="rscadd">pAIs now can use binary encryption keys</li>
+				<li class="rscadd">pAIs can now select holochassis using radial menu</li>
+				<li class="tweak">pAIs can now select radio channel from encryption keys</li>
+				<li class="code_imp">Cleaned up pAIs and aicard code</li>
 			</ul>
 			<h3 class="author">Wayland-Smithy (EvilDragonfiend ports, and a tweak) updated:</h3>
 			<ul class="changes bgimages16">
